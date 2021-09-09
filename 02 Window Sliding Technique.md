@@ -67,3 +67,6 @@ print(maxSum(arr, n, k))
  
  
 ```
+
+It can be observed from the above code that the time complexity is O(k*n) as it contains two nested loops.
+
