@@ -79,3 +79,55 @@ Consider an array arr[] = {5, 2, -1, 0, 3} and value of k = 3 and n = 5
 * We compute the sum of first k elements out of n terms using a linear loop and store the sum in variable window_sum.
 * Then we will graze linearly over the array till it reaches the end and simultaneously keep track of maximum sum.
 * To get the current sum of block of k elements just subtract the first element from the previous block and add the last element of the current block .
+
+The below representation will make it clear how the window slides over the array.
+This is the initial phase where we have calculated the initial window sum starting from index 0 . At this stage the window sum is 6. Now, we set the maximum_sum as current_window i.e 6
+
+![image](https://user-images.githubusercontent.com/11299574/132710032-45f14f40-2cc6-4078-86c2-8e3915c6dc5f.png)
+
+Now, we slide our window by a unit index. Therefore, now it discards 5 from the window and adds 0 to the window. Hence, we will get our new window sum by subtracting 5 and then adding 0 to it. So, our window sum now becomes 1. Now, we will compare this window sum with the maximum_sum. As it is smaller we wont the change the maximum_sum. 
+
+![image](https://user-images.githubusercontent.com/11299574/132710092-b109295f-43af-4790-bda6-00768be08769.png)
+
+Similarly, now once again we slide our window by a unit index and obtain the new window sum to be 2. Again we check if this current window sum is greater than the maximum_sum till now. Once, again it is smaller so we don’t change the maximum_sum.
+Therefore, for the above array our maximum_sum is 6.
+
+![image](https://user-images.githubusercontent.com/11299574/132710165-762022ff-a973-4a94-bef8-961e97eb5495.png)
+
+
+```py
+# O(n) solution for finding
+# maximum sum of a subarray of size k
+ 
+ 
+def maxSum(arr, k):
+    # length of the array
+    n = len(arr)
+ 
+    # n must be greater than k
+    if n < k:
+        print("Invalid")
+        return -1
+ 
+    # Compute sum of first window of size k
+    window_sum = sum(arr[:k])
+ 
+    # first sum available
+    max_sum = window_sum
+ 
+    # Compute the sums of remaining windows by
+    # removing first element of previous
+    # window and adding last element of
+    # the current window.
+    for i in range(n - k):
+        window_sum = window_sum - arr[i] + arr[i + k]
+        max_sum = max(window_sum, max_sum)
+ 
+    return max_sum
+ 
+ 
+# Driver code
+arr = [1, 4, 2, 10, 2, 3, 1, 0, 20]
+k = 4
+print(maxSum(arr, k))
+```
