@@ -32,7 +32,6 @@ Consider the below implementation :
 ```py
 
 import sys
-print "GFG"
 # O(n * k) solution for finding
 # maximum sum of a subarray of size k
 INT_MIN = -sys.maxsize - 1
