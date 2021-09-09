@@ -131,3 +131,6 @@ arr = [1, 4, 2, 10, 2, 3, 1, 0, 20]
 k = 4
 print(maxSum(arr, k))
 ```
+
+Now, it is quite obvious that the Time Complexity is linear as we can see that only one loop runs in our code. Hence, our Time Complexity is O(n).
+We can use this technique to find max/min k-subarray, XOR, product, sum, etc.
